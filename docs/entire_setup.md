@@ -20,7 +20,7 @@ Following is the overall architecture that we are going setup:
                                 │
           ┌─────────────────────┴─────────────────────┐
           │                                           │
-      Mosquitto                               x5-v720 python server
+Mosquitto MQTT broker                        x5-v720 python server
       TCP 1883                                     HTTP :80
           │                                           │
           │                                           │
@@ -323,7 +323,7 @@ sudo .venv/bin/python src/a9_naxclow.py -sv
 
 ## 5. Setup camera
 
-First we need to monitor MQTT logs to get the camera details when it connects to your WiFi. Run the following in a separate console:
+First we need to monitor MQTT logs to get the camera details when it connects to your WiFi. Run the following in a separate terminal:
 
 ```bash
 mosquitto_sub -h 127.0.0.1 -t '#' -v
@@ -380,7 +380,7 @@ http://192.168.0.6/dev/080c00049CA2/irOn
 http://192.168.0.6/dev/080c00049CA2/irOff
 ```
 
-In future, if you whish to change WiFi name/password or move camera to different LAN, then run following *before* changing settings on router:
+In future, if you whish to change WiFi name/password or move camera to different network, then run following *before* changing settings on router:
 
 ```bash
 mosquitto_pub \
@@ -424,7 +424,7 @@ http://192.168.0.6/dev/080c00049CA2/audio
 
 The mic on the camera is very weak. I am using a separate ESP32 I2C mic to stream clear audio.
 
-For easy viewing, edit [x5stream.html](../x5stream.html) to update URLs. Then  copy it on your computer or mobile phone and simply open it in any browser.
+For easy viewing, edit [x5stream.html](../x5stream.html) and update URLs. Then  copy the `x5stream.html` file on your computer or mobile phone and simply open it in any browser.
 
 > ![HTML file demo](/images/htmlFileDemo.jpg)
 
@@ -438,7 +438,7 @@ Create a service file:
 sudo nano /etc/systemd/system/x5-v720.service
 ```
 
-Then paste the following. Don't forget to update user's home directory in the path.
+Then paste the following. Don't forget to update user's home directory in the text below.
 
 ```ini
 [Unit]
@@ -542,12 +542,6 @@ Disable automatic x5 server startup
 
 ```bash
 sudo systemctl disable x5-v720.service
-```
-
-Check x5 server HTTP port
-
-```bash
-sudo ss -ltnp | grep ':80'
 ```
 
 Check MQTT broker port
