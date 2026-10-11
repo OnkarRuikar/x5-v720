@@ -348,7 +348,7 @@ And in the MQTT logs:
 ```text
 Naxclow/P2P/Users/Device/Status {"device":"080c00049CA2","token":"NAXCLOW","status": 0}
 Naxclow/P2P/Users/Device/Status {"device":"080c00049CA2","token":"NAXCLOW","status": 1}
-Naxclow/P2P/Users/Device/Info {"apStatus": 0,"devPower": 100,"sdCapacity": 0,"IrLed": 0,"instLed": 1,"sdMoveMode": 0,"sdCardReco": 1,"moveGrade": 0,"pirAlert": 0,"pirGrade": 2,"cameraState": 0,"random":"HIJKLM","token":"21521bf380","devicesCode":"080c00049CA2","wifiName":"MyLan","version":"202406171854"}
+Naxclow/P2P/Users/Device/Info {"apStatus": 0,"devPower": 100,"sdCapacity": 0,"IrLed": 0,"instLed": 1,"sdMoveMode": 0,"sdCardReco": 1,"moveGrade": 0,"pirAlert": 0,"pirGrade": 2,"cameraState": 0,"random":"HIJKLM","token":"21521bf380","devicesCode":"080c00049CA2","wifiName":"MyWiFi","version":"202406171854"}
 ```
 
 ## 6. Camera commands
@@ -386,7 +386,7 @@ In future, if you whish to change WiFi name/password or move camera to different
 mosquitto_pub \
   -h 127.0.0.1 \
   -t 'Naxclow/P2P/Users/Device/sub/080c00049CA2' \
-  -m '{"code":204,"wifiName": "MyLan","password": "44332211"}'
+  -m '{"code":204,"wifiName": "MyNewWifi","password": "44332211"}'
 ```
 
 If you've already changed WiFi then above MQTT command is not useful; you need to use the v720 app to update the WiFi information.
