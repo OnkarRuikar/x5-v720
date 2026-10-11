@@ -1,0 +1,16 @@
+{
+    "python.formatting.autopep8Args": [
+        "--max-line-length",
+        "160",
+        "--experimental"
+    ],
+    "cSpell.words": [
+        "Dnsmasq",
+        "libgl",
+        "Mosquitto",
+        "naxclow",
+        "pyenv",
+        "restartdns",
+        "venv"
+    ]
+}
